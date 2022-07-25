@@ -155,17 +155,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Clear.cpp" />
     <ClCompile Include="Config.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Result.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Clear.h" />
     <ClInclude Include="Config.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Result.h" />
     <ClInclude Include="SceneMgr.h" />
+    <ClInclude Include="GameOver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

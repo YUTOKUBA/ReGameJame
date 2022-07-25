@@ -3,18 +3,28 @@
 #include "Game.h"
 #include "Menu.h"
 #include "SceneMgr.h"
+#include "Clear.h"
+#include "GameOver.h"
+#include "Result.h"
+
+
 static eScene mScene = eScene_Menu; //シーン管理変数
 static eScene mNextScene = eScene_None; //次のシーン管理変数
 static void SceneMgr_InitializeModule(eScene scene);//指定モジュールを初期化する
 static void SceneMgr_FinalizeModule(eScene scene);//指定モジュールの終了処理を行う
+
+
 //初期化
 void SceneMgr_Initialize() {
 	SceneMgr_InitializeModule(mScene);
 }
+
+
 //終了処理
 void SceneMgr_Finalize() {
 	SceneMgr_FinalizeModule(mScene);
 }
+
 //更新
 void SceneMgr_Update() {
 	if (mNextScene != eScene_None) { //次のシーンがセットされていたら
@@ -24,7 +34,7 @@ void SceneMgr_Update() {
 		SceneMgr_InitializeModule(mScene); //現在のシーンを初期化
 	}
 	switch (mScene) { //シーンによって処理を分岐
-	case eScene_Menu: //現在の画面がメニューなら
+	case eScene_Menu: //現在の画面がメニュー(タイトル)なら
 		Menu_Update(); //メニュー画面の更新処理をする
 		break;//以下略
 	case eScene_Game:
@@ -32,6 +42,15 @@ void SceneMgr_Update() {
 		break;
 	case eScene_Config:
 		Config_Update();
+		break;
+	case eScene_Clear:
+		Clear_Update();
+		break;
+	case eScene_GameOver:
+		GameOver_Update();
+		break;
+	case eScene_Result:
+		Result_Update();
 		break;
 	}
 }
@@ -47,12 +66,24 @@ void SceneMgr_Draw() {
 	case eScene_Config:
 		Config_Draw();
 		break;
+	case eScene_Clear:
+		Clear_Draw();
+		break;
+	case eScene_GameOver:
+		GameOver_Draw();
+		break;
+	case eScene_Result:
+		Result_Draw();
+		break;
 	}
 }
+
+
 // 引数 nextScene にシーンを変更する
 void SceneMgr_ChangeScene(eScene NextScene) {
 	mNextScene = NextScene; //次のシーンをセットする
 }
+
 // 引数sceneモジュールを初期化する
 static void SceneMgr_InitializeModule(eScene scene) {
 	switch
@@ -65,6 +96,15 @@ static void SceneMgr_InitializeModule(eScene scene) {
 		break;
 	case eScene_Config:
 		Config_Initialize();
+		break;
+	case eScene_Clear:
+		Clear_Initialize();
+		break;
+	case eScene_GameOver:
+		GameOver_Initialize();
+		break;
+	case eScene_Result:
+		Result_Finalize();
 		break;
 	}
 }
@@ -80,6 +120,15 @@ static void SceneMgr_FinalizeModule(eScene scene) {
 		break;
 	case eScene_Config:
 		Config_Finalize();
+		break;
+	case eScene_Clear:
+		Clear_Finalize();
+		break;
+	case eScene_GameOver:
+		GameOver_Finalize();
+		break;
+	case eScene_Result:
+		Result_Finalize();
 		break;
 	}
 }
