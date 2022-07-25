@@ -5,6 +5,7 @@
 static int mImageHandle; //画像ハンドル格納用変数
 //初期化
 void Result_Initialize() {
+	mImageHandle = LoadGraph("images/Scene_Result.png"); //画像のロード
 }
 //終了処理
 void Result_Finalize() {

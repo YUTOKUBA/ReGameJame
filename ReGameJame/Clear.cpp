@@ -5,6 +5,7 @@
 static int mImageHandle; //画像ハンドル格納用変数
 //初期化
 void Clear_Initialize() {
+	mImageHandle = LoadGraph("images/Scene_GaneClear.png"); //画像のロード
 }
 //終了処理
 void Clear_Finalize() {

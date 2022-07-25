@@ -104,7 +104,7 @@ static void SceneMgr_InitializeModule(eScene scene) {
 		GameOver_Initialize();
 		break;
 	case eScene_Result:
-		Result_Finalize();
+		Result_Initialize();
 		break;
 	}
 }
