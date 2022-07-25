@@ -5,6 +5,8 @@ Quest QUESTION;
 
 void RandCheck(int i) {
 
+
+
 }
 
 Quest::Quest() {
@@ -14,7 +16,7 @@ Quest::Quest() {
 
 	//‘S–â‘è—p‚Ì•Ï”‚Ì‰Šú‰»
 	All_Quest[19][1][4] = {};
-	
+
 	QCount = 0;
 	RandLog[9] = {};
 }
@@ -24,13 +26,13 @@ Quest::~Quest() {
 }
 
 void Quest::Init() {
-	
+
 	Question[9][1][4] = {};
 	Question_Original[9][1][4] = {};
-	All_Quest[19][1][4] = {};
-	QCount = 0;
-	for (int i = 0; i < 20; i++) {
 
+	QCount = 0;
+	for (int i = 0; i < 10; i++) {
+		RandLog[i] = 20;
 	}
 
 }
