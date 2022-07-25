@@ -3,13 +3,17 @@
 
 Quest QUESTION;
 
+void RandCheck(int i) {
+
+}
+
 Quest::Quest() {
 
 	Question[9][1][4] = {};
 	Question_Original[9][1][4] = {};
 	All_Quest[19][1][4] = {};
 	QCount = 0;
-
+	RandLog[9] = {};
 }
 
 Quest::~Quest() {
@@ -57,6 +61,7 @@ void Quest::Question_input() {
 
 void Quest::Question_select() {
 
+	GetRand(19);
 
 
 }
