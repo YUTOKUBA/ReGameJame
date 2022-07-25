@@ -4,6 +4,7 @@
 Quest QUESTION;
 
 Quest::Quest() {
+
 	Question[9][1][4] = {};
 	Question_Original[9][1][4] = {};
 	All_Quest[19][1][4] = {};
@@ -12,6 +13,15 @@ Quest::Quest() {
 }
 
 Quest::~Quest() {
+
+}
+
+void Quest::Init() {
+	
+	Question[9][1][4] = {};
+	Question_Original[9][1][4] = {};
+	All_Quest[19][1][4] = {};
+	QCount = 0;
 
 }
 
@@ -45,11 +55,11 @@ void Quest::Question_input() {
 
 }
 
-//void Quest::Question_select() {
-//
-//
-//
-//}
+void Quest::Question_select() {
+
+
+
+}
 
 void Quest::DrawQuestion() {
 	SetFontSize(20);

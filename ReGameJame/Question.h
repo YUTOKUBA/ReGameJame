@@ -20,9 +20,11 @@ public:
 
 	~Quest();
 
+	void Init();
+
 	bool Answer_judge();		//正誤判定
 	void Question_input();		//全問題から出題する問題の配列に問題を格納する
-	//void Question_select();		//
+	void Question_select();		//乱数で全問題から出題する問題に格納する配列の添え字を抽選する
 	void DrawQuestion();		//問題描画
 
 

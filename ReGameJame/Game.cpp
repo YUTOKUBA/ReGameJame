@@ -7,6 +7,7 @@ float g_TimeLimit;
 void Game_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_Game.png"); //画像のロード
 	g_TimeLimit = 60 * (TIMELIMIT + 1); //制限時間をセット
+	QUESTION.Init();
 }
 //終了処理
 void Game_Finalize() {
