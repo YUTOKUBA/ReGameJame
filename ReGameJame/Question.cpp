@@ -3,7 +3,7 @@
 
 Quest QUESTION;
 
-void RandCheck(int i) {
+int RandCheck(int i) {
 
 
 
@@ -15,7 +15,7 @@ Quest::Quest() {
 	Question_Original[9][1][4] = {};
 
 	//全問題用の変数の初期化
-	All_Quest[19][1][4] = {};
+	//All_Quest[19][1][4] = {};
 
 	QCount = 0;
 	RandLog[9] = {};
@@ -48,7 +48,7 @@ bool Quest::Answer_judge() {
 		Choices = 1;
 	}
 
-	for (int i = 0; Question[QCount][Choices][i] == '\n'; i++) {
+	for (int i = 0; Question[QCount][Choices][i] == '○'; i++) {
 		Question[QCount][Choices][i] = 'あ';
 	}
 
@@ -69,14 +69,16 @@ void Quest::Question_input() {
 
 void Quest::Question_select() {
 
-	GetRand(19);
+	for (int i = 0; i < 10; i++){
+		RandLog[i] = RandCheck(GetRand(19));
+	}
 
 
 }
 
 void Quest::DrawQuestion() {
 	SetFontSize(20);
-	DrawFormatString(100, 200, 0x000000, "%5s", "くまモン");
-	DrawFormatString(500, 200, 0x000000, "%5s", "チーバ君");
+	DrawFormatString(100, 200, 0x000000, "%5s", All_Quest[QCount][0]);
+	DrawFormatString(500, 200, 0x000000, "%5s", All_Quest[QCount][1]);
 
 }

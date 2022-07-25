@@ -10,7 +10,21 @@ private:
 
 	char Question[10][2][5];				//出題する問題の配列
 	char Question_Original[10][2][5];		//正誤比較用の問題配列
-	char All_Quest[20][2][5];				//全問題
+	char All_Quest[20][2][9] =				//全問題
+	{
+		{//1問目
+			{"あいす\0\0"},
+			{"うすい\0\0"}
+		},
+		{//2問目
+			{"そうたい"},
+			{"あんたい"} 
+		},
+		{//3問目
+			{},
+			{}
+		}
+	};
 
 	int QCount;			//現在問題数のカウント
 	int RandLog[10];	//乱数格納配列　　一回選んだ問題をまた選ばないように
@@ -28,6 +42,6 @@ public:
 	void DrawQuestion();		//問題描画
 
 
-};
+	};
 
-extern Quest QUESTION;
+	extern Quest QUESTION;
