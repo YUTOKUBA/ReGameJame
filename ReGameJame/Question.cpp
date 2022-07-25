@@ -45,11 +45,11 @@ void Quest::Question_input() {
 
 }
 
-void Quest::Question_select() {
-
-
-
-}
+//void Quest::Question_select() {
+//
+//
+//
+//}
 
 void Quest::DrawQuestion() {
 	SetFontSize(20);
