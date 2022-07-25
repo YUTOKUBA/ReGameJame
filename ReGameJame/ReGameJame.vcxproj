@@ -162,6 +162,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Question.cpp" />
     <ClCompile Include="Result.cpp" />
     <ClCompile Include="SceneMgr.cpp" />
   </ItemGroup>
@@ -171,6 +172,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="Question.h" />
     <ClInclude Include="Result.h" />
     <ClInclude Include="SceneMgr.h" />
     <ClInclude Include="GameOver.h" />

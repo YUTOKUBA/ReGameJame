@@ -28,7 +28,10 @@ void Game_Update() {
 }
 //描画
 void Game_Draw() {
+	
 	DrawGraph(0, 0, mImageHandle, FALSE);
+	QUESTION.DrawQuestion();
+	SetFontSize(18);
 	DrawString(20, 380, "ゲーム画面です。", GetColor(136, 136, 255));
 	DrawString(20, 400, TEXT("Fキーを押すとゲームクリア画面に行きます。"), GetColor(136,136, 255));
 	DrawString(20, 420, TEXT("Hキーを押すとゲームオーバー画面に行きます。"), GetColor(136,136, 255));
