@@ -11,7 +11,10 @@ Quest::Quest() {
 
 	Question[9][1][4] = {};
 	Question_Original[9][1][4] = {};
+
+	//‘S–â‘è—p‚Ì•Ï”‚Ì‰Šú‰»
 	All_Quest[19][1][4] = {};
+	
 	QCount = 0;
 	RandLog[9] = {};
 }
@@ -26,6 +29,9 @@ void Quest::Init() {
 	Question_Original[9][1][4] = {};
 	All_Quest[19][1][4] = {};
 	QCount = 0;
+	for (int i = 0; i < 20; i++) {
+
+	}
 
 }
 
