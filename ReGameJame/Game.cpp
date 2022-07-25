@@ -3,6 +3,7 @@
 #include "DxLib.h"
 static int mImageHandle; //画像ハンドル格納用変数
 float g_TimeLimit; 
+
 //初期化
 void Game_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_Game.png"); //画像のロード

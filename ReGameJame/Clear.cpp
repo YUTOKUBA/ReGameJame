@@ -2,10 +2,13 @@
 #include "SceneMgr.h"
 #include "DxLib.h"
 
+float Time;
+
 static int mImageHandle; //画像ハンドル格納用変数
 //初期化
 void Clear_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_GaneClear.png"); //画像のロード
+	Time = 60 * 5;
 }
 //終了処理
 void Clear_Finalize() {
@@ -13,13 +16,13 @@ void Clear_Finalize() {
 }
 //更新
 void Clear_Update() {
-	if (CheckHitKey(KEY_INPUT_C) != 0) {//Gキーが押されていたら
-		SceneMgr_ChangeScene(eScene_Result);//シーンをゲーム画面に変更
+	if (Time-- < 3 ||CheckHitKey(KEY_INPUT_C)) {		//3秒後もしくはCキーを押したらにシーンをリザルトに変更
+		SceneMgr_ChangeScene(eScene_Result);
 	}
 }
 //描画
 void Clear_Draw() {
 	DrawGraph(0, 0, mImageHandle, FALSE);
 	DrawString(20, 380, "クリア画面です。", GetColor(136, 136, 255));
-	DrawString(20, 400, "Cキーを押すとリザルト画面に進みます。", GetColor(136, 136, 255));
+	DrawString(20, 400, "3秒待つ、もしくはCキーを押すとリザルト画面に進みます。", GetColor(136, 136, 255));
 }
