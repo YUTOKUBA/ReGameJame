@@ -4,7 +4,8 @@
 static int mImageHandle; //画像ハンドル格納用変数
 //初期化
 void Menu_Initialize() {
-	mImageHandle = LoadGraph("images/Scene_Menu.png"); //画像のロード
+	//mImageHandle = LoadGraph("images/Scene_Menu.png"); //画像のロード
+	mImageHandle = LoadGraph("images/Title(仮).png"); //画像のロード
 }
 //終了処理
 void Menu_Finalize() {
