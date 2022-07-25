@@ -4,7 +4,7 @@
 static int mImageHandle; //画像ハンドル格納用変数
 //初期化
 void Config_Initialize() {
-	mImageHandle = LoadGraph("images/Scene_Config.png");//画像のロード
+	mImageHandle = LoadGraph("images/Help.png");//画像のロード
 }
 //終了処理
 void Config_Finalize() {
@@ -19,7 +19,7 @@ void Config_Update() {
 //描画
 void Config_Draw() {
 	DrawGraph(0, 0, mImageHandle, FALSE);
-	DrawString(20, 380, "設定画面です。", GetColor(136, 136, 255));
+	/*DrawString(20, 380, "設定画面です。", GetColor(136, 136, 255));
 	DrawString(20, 400, "Escキーを押すとメニュー画面に戻ります。", GetColor(136, 136,
-		255));
+		255));*/
 }
