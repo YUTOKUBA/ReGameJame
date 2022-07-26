@@ -10,6 +10,7 @@ typedef enum
 	eScene_Credit,
 	eScene_End,
 	eScene_None, //無し
+
 } eScene;
 void SceneMgr_Initialize();//初期化
 void SceneMgr_Finalize();//終了処理
@@ -18,3 +19,6 @@ void SceneMgr_Draw();//描画
 
 // 引数 nextSceneにシーンを変更する
 void SceneMgr_ChangeScene(eScene nextScene);
+
+extern int FontHandle1;
+extern int FontHandle2;

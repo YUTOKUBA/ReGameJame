@@ -1,9 +1,12 @@
 #include "SceneMgr.h"
+#include "Result.h"
 #include "DxLib.h"
 #include "Input.h"
 
 static int mImageHandle; //画像ハンドル格納用変数
 static int g_ResultBGM;
+float TimeResult;
+
 //初期化
 void Result_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_Result.png"); //画像のロード
@@ -24,6 +27,17 @@ void Result_Update() {
 //描画
 void Result_Draw() {
 	DrawGraph(0, 0, mImageHandle, FALSE);
+
+	SetFontSize(25);
+	DrawFormatString(120, 160, 0xffffff, "のこりじかん");
+	DrawFormatStringToHandle(240, 190, 0xffffff, FontHandle2, "%2.2f", TimeResult / 60);
+	DrawFormatString(400, 212, 0xffffff, "びょう");
+	DrawFormatString(120, 250, 0xffffff, "せいかいしたかず");
+
+	DrawFormatStringToHandle(240, 280, 0xffffff, FontHandle2, "？/10");
+	DrawFormatString(400, 302, 0xffffff, "問");
+
+	SetFontSize(16);
 	DrawString(20, 380, "リザルト画面です。", GetColor(136, 136, 255));
 	DrawString(20, 400, "SPACEキーを押すとタイトル画面に進みます。", GetColor(136, 136, 255));
 }

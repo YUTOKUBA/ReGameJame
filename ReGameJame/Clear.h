@@ -3,4 +3,4 @@ void Clear_Finalize();//I—¹ˆ—
 void Clear_Update();//XV
 void Clear_Draw();//•`‰æ#pragma once
 
-extern float Time;
+extern int ClearWaitTime;

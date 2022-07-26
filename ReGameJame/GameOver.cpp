@@ -2,13 +2,13 @@
 #include "SceneMgr.h"
 #include "DxLib.h"
 
-float Time2;
+int GameOverWaitTime;
 static int GameOverSound;
 static int mImageHandle; //画像ハンドル格納用変数
 //初期化
 void GameOver_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_GaneOver.png"); //画像のロード
-	Time2 = 60 * 5;
+	GameOverWaitTime = 60 * 5;
 	GameOverSound = LoadSoundMem("BGM_SE/faild-comical.mp3");	//SEの読み込み
 	PlaySoundMem(GameOverSound, DX_PLAYTYPE_BACK, TRUE);
 
@@ -19,7 +19,7 @@ void GameOver_Finalize() {
 }
 //更新
 void GameOver_Update() {
-	if ( Time2--< 3 ||CheckHitKey(KEY_INPUT_J) != 0) {//Gキーが押されていたら
+	if (GameOverWaitTime--< 3 ||CheckHitKey(KEY_INPUT_J) != 0) {//Gキーが押されていたら
 		SceneMgr_ChangeScene(eScene_Result);//シーンをリザルト画面に変更
 	}
 }
