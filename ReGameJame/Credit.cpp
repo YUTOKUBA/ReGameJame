@@ -15,7 +15,7 @@ void Credit_Finalize() {
 }
 //更新
 void Credit_Update() {
-	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0 || XNowKey.Buttons[XINPUT_BUTTON_A]) {//Escキーが押されていたらorBボタンが押されていたら
+	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0 || XNowKey.Buttons[XINPUT_BUTTON_B]) {//Escキーが押されていたらorBボタンが押されていたら
 		SceneMgr_ChangeScene(eScene_Menu);//シーンをメニューに変更
 	}
 }
