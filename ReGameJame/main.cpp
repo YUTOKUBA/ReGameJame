@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "SceneMgr.h"
+#include"Input.h"
 
 //更新
 
@@ -9,7 +10,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 	SetDrawScreen(DX_SCREEN_BACK); //裏画面設定
 	SceneMgr_Initialize(); //
 	while (ScreenFlip() == 0 && ProcessMessage() == 0 && ClearDrawScreen() == 0) { //画面更新 &メッセージ処理& 画面消去
-			SceneMgr_Update(); //更新
+		SceneMgr_Update(); //更新
 		SceneMgr_Draw(); //描画
 	}
 	SceneMgr_Finalize();

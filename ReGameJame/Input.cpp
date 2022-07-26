@@ -1,6 +1,10 @@
 #include<stdio.h>
-#include"Input.h"
 #include"DxLib.h"
+#include"Game.h"
+
+int	g_OldKey;				// 前回の入力キー
+int	g_NowKey;				// 今回の入力キー
+int	g_KeyFlg;				// 入力キー情報
 
 void InputKey(void) {
 	//入力キー取得
