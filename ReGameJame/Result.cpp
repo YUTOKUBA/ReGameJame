@@ -3,13 +3,17 @@
 #include "Input.h"
 
 static int mImageHandle; //画像ハンドル格納用変数
+static int g_ResultBGM;
 //初期化
 void Result_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_Result.png"); //画像のロード
+	g_ResultBGM = LoadSoundMem("BGM_SE/Sunrise.mp3");	//BGMのロード
+	PlaySoundMem(g_ResultBGM, DX_PLAYTYPE_LOOP, TRUE);
 }
 //終了処理
 void Result_Finalize() {
 	DeleteGraph(mImageHandle); //画像の解放
+	DeleteSoundMem(g_ResultBGM); //音源の開放
 }
 //更新
 void Result_Update() {
