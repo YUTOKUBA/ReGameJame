@@ -7,7 +7,7 @@
 #include "GameOver.h"
 #include "Result.h"
 #include "Credit.h"
-
+#include "End.h"
 
 static eScene mScene = eScene_Menu; //シーン管理変数
 static eScene mNextScene = eScene_None; //次のシーン管理変数
@@ -81,6 +81,8 @@ void SceneMgr_Draw() {
 		break;
 	case eScene_Credit:
 		Credit_Draw();
+	case eScene_End:
+		End_Draw();
 		break;
 	}
 }
@@ -115,6 +117,8 @@ static void SceneMgr_InitializeModule(eScene scene) {
 		break;
 	case eScene_Credit:
 		Credit_Initialize();
+	case eScene_End:
+		End_Initialize();
 		break;
 	}
 }
@@ -142,6 +146,8 @@ static void SceneMgr_FinalizeModule(eScene scene) {
 		break;
 	case eScene_Credit:
 		Credit_Finalize();
+	case eScene_End:
+		End_Finalize();
 		break;
 	}
 }

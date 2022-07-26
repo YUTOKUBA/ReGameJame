@@ -8,6 +8,7 @@ typedef enum
 	eScene_Result,
 	eScene_GameOver,
 	eScene_Credit,
+	eScene_End,
 	eScene_None, //–³‚µ
 } eScene;
 void SceneMgr_Initialize();//‰Šú‰»

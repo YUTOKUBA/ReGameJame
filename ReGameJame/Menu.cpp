@@ -57,7 +57,7 @@ void Menu_Update() {
 			SceneMgr_ChangeScene(eScene_Credit);//シーンをクレジット画面に変更
 			break;
 		case 3:
-			DxLib_End();						//終了
+			SceneMgr_ChangeScene(eScene_End);//シーンをエンド画面に変更
 			break;
 		}
 	}
