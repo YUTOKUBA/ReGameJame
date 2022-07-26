@@ -8,6 +8,9 @@ void Game_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_Game.png"); //画像のロード
 	g_TimeLimit = 60 * (TIMELIMIT + 1); //制限時間をセット
 	QUESTION.Init();
+	QUESTION.Question_select();
+	//QUESTION.Question_Onceinput();
+	QUESTION.Question_input();
 }
 //終了処理
 void Game_Finalize() {
@@ -26,6 +29,9 @@ void Game_Update() {
 	if (g_TimeLimit-- <= 60 || CheckHitKey(KEY_INPUT_H) != 0) {
 		SceneMgr_ChangeScene(eScene_GameOver);//シーンをメニューに変更
 	}
+
+	QUESTION.Answer_judge();
+
 }
 //描画
 void Game_Draw() {
