@@ -4,11 +4,15 @@
 
 float Time;
 
+static int ClearSound;
+
 static int mImageHandle; //画像ハンドル格納用変数
 //初期化
 void Clear_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_GaneClear.png"); //画像のロード
 	Time = 60 * 5;
+	ClearSound = LoadSoundMem("BGM_SE/success.mp3");	//SEの読み込み
+	PlaySoundMem(ClearSound, DX_PLAYTYPE_BACK, TRUE);
 }
 //終了処理
 void Clear_Finalize() {
