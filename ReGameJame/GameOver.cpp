@@ -2,10 +2,12 @@
 #include "SceneMgr.h"
 #include "DxLib.h"
 
+float Time2;
 static int mImageHandle; //画像ハンドル格納用変数
 //初期化
 void GameOver_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_GaneOver.png"); //画像のロード
+	Time2 = 60 * 5;
 }
 //終了処理
 void GameOver_Finalize() {
@@ -13,7 +15,7 @@ void GameOver_Finalize() {
 }
 //更新
 void GameOver_Update() {
-	if (CheckHitKey(KEY_INPUT_J) != 0) {//Gキーが押されていたら
+	if ( Time2--< 3 ||CheckHitKey(KEY_INPUT_J) != 0) {//Gキーが押されていたら
 		SceneMgr_ChangeScene(eScene_Result);//シーンをリザルト画面に変更
 	}
 }

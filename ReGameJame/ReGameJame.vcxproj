@@ -157,6 +157,8 @@
   <ItemGroup>
     <ClCompile Include="Clear.cpp" />
     <ClCompile Include="Config.cpp" />
+    <ClCompile Include="Credit.cpp" />
+    <ClCompile Include="End.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -169,6 +171,8 @@
   <ItemGroup>
     <ClInclude Include="Clear.h" />
     <ClInclude Include="Config.h" />
+    <ClInclude Include="Credit.h" />
+    <ClInclude Include="End.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Menu.h" />

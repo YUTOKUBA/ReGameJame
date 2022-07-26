@@ -4,16 +4,6 @@
 
 Quest QUESTION;
 
-//int RandCheck(int i) {
-//
-//	for (int j = 0; j < RAND_MAX; j++) {
-//		if (QUESTION.GetRandLog(j) == i) RandCheck(GetRand(19));
-//	}
-//
-//	return i;
-//
-//}
-
 Quest::Quest() {
 
 	Question[9][1][4] = {};
@@ -69,9 +59,6 @@ bool Quest::Answer_judge() {
 }
 
 void Quest::Question_input() {
-
-	int Count = 0;
-	char* P=0;
 
 	//全問題からのコピー
 	for (int j = 0; j < 2; j++) {
