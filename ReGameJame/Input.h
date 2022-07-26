@@ -1,9 +1,16 @@
 #pragma once
+#include "DxLib.h"
 
-//変数の宣言
-extern int	g_OldKey;				// 前回の入力キー
-extern int	g_NowKey;				// 今回の入力キー
-extern int	g_KeyFlg;				// 入力キー情報
 
-//関数の宣言
-void InputKey(void);				//パッド入力
+int	g_OldKey;
+int	g_NowKey;
+int	g_KeyFlg;
+extern int	g_OldKey;
+extern int	g_NowKey;
+extern int	g_KeyFlg;
+
+extern XINPUT_STATE XNowKey;
+extern XINPUT_STATE XOldKey;
+
+
+void InputKey(void);
