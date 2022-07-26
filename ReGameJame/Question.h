@@ -34,10 +34,11 @@ private:
 	int RandLog[10];	//乱数格納配列　　
 
 	char A = 'あ';		//'あ'を代入するようの変数
-	char Circle = '○';		//'○'を代入するようの変数
+	char Circle = '０';		//'○'を代入するようの変数
 
-	char* Point_A;		//'あ'または'ア'のポインタを格納する変数
-	char* Point_Circle;		//'○'のポインタを格納する変数
+	char* Point_A = NULL;		//'あ'または'ア'のポインタを格納する変数
+	char* Point_Rand = NULL;		//文字列のランダムなポインタを格納する変数
+	char* Point_Circle = NULL;		//'○'のポインタを格納する変数
 
 public:
 	Quest();
@@ -56,8 +57,11 @@ public:
 	}
 
 	void Question_Onceinput() {
-		/**Question[0][0] = **/strcpy(Question[0][0], All_Quest[0][1]);
+		/**Question[0][0] = **/strcpy(Question[0][0], All_Quest[0][0]);
+		/**Question[0][0] = **/strcpy(Question[0][1], All_Quest[0][1]);
 	}
+
+	//void ChangeChar()
 
 	};
 

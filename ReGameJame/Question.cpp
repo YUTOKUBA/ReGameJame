@@ -46,14 +46,15 @@ bool Quest::Answer_judge() {
 
 	int Choices = 0;
 
-	/*if (GetJoypadInputState(PAD_INPUT_4) == 1) {
+	//右だったらA、左だったらB
+	/*if () {//右
 		Choices = 0;
 	}
-	else if (GetJoypadInputState(PAD_INPUT_5) == 1) {
+	else if () == 1) {//左
 		Choices = 1;
 	}*/
 
-	Point_Circle = strchr(Question[QCount][Choices], '○');
+	Point_Circle = strchr(Question[QCount][Choices], '_');
 	if (Point_Circle != NULL)Point_Circle = &A;
 
 	//現在出されている問題とその問題のオリジナルを比較する
@@ -70,27 +71,37 @@ bool Quest::Answer_judge() {
 void Quest::Question_input() {
 
 	int Count = 0;
+	char* P=0;
 
 	//全問題からのコピー
 	for (int j = 0; j < 2; j++) {
 		for (int i = 0; i < 10; i++) {
 			//出題用にランダムに選ばれた全問題の中身（文字列）をコピーする
-			strcpy(Question[i][j], All_Quest[RandLog[i]][j]);
+			strcpy(Question[0][j], All_Quest[0/*RandLog[0]*/][j]);
 
 			//正誤比較用にランダムに選ばれた全問題の中身（文字列）をコピーする
-			strcpy(Question_Original[i][j], All_Quest[RandLog[i]][j]);
+			strcpy(Question_Original[0][j], All_Quest[0/*RandLog[0]*/][j]);
 			
 		}
 	}
 	for (int j = 0; j < 2; j++) {
-		for (int i = 0; i < 10; i++) {
-			Point_A = strchr(Question[i][j], 'あ');
+		for (int i = 0; i < 1; i++) {
+			//'あ'の場所のアドレスを取る
+			Point_A = strchr(Question[0][j], 'あ');
+			//NULLだったら'あ'がない,NULL以外だったら'あ'がある
 			if (Point_A != NULL) {
-				Point_A = &Circle;
+				//'あ'の場所に代入する
+
+				*(Point_A-1) = '_';
+				*(Point_A) = '_';
+
 			}
 			else {
-				int StrNumber = GetRand(2);
-				Question[i][j][(StrNumber * 2) + 1] = Circle;
+				//'あ'がなかったら、ランダムな位置の文字を''を代入する
+				int StrNumber = GetRand(3);
+				Question[0][j][(StrNumber * 2)]= '_';
+				Question[0][j][(StrNumber * 2+1)]= '_';
+				
 			}
 		}
 	}
@@ -109,6 +120,6 @@ void Quest::Question_select() {
 void Quest::DrawQuestion() {
 	SetFontSize(20);
 	DrawFormatString(100, 200, 0x000000, "%5s", Question[QCount][0]);
-	//DrawFormatString(500, 200, 0x000000, "%5s", Question[QCount][1]);
+	DrawFormatString(500, 200, 0x000000, "%5s", Question[QCount][1]);
 
 }
