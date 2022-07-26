@@ -7,7 +7,7 @@ float g_TimeLimit;
 //初期化
 void Game_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_Game.png"); //画像のロード
-	g_TimeLimit = 60 * (TIMELIMIT + 1); //制限時間をセット
+	g_TimeLimit = 60 * (TIMELIMIT); //制限時間をセット
 	//QUESTION.Init();
 }
 //終了処理
@@ -24,7 +24,7 @@ void Game_Update() {
 	//}
 	
 	//計測時間を過ぎたらゲームオーバー
-	if (g_TimeLimit-- <= 60 || CheckHitKey(KEY_INPUT_H) != 0) {
+	if (g_TimeLimit-- <= 1 || CheckHitKey(KEY_INPUT_H) != 0) {
 		SceneMgr_ChangeScene(eScene_GameOver);//シーンをメニューに変更
 	}
 }
