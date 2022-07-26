@@ -6,6 +6,7 @@
 #include "Clear.h"
 #include "GameOver.h"
 #include "Result.h"
+#include "Credit.h"
 
 
 static eScene mScene = eScene_Menu; //シーン管理変数
@@ -52,6 +53,9 @@ void SceneMgr_Update() {
 	case eScene_Result:
 		Result_Update();
 		break;
+	case eScene_Credit:
+		Credit_Update();
+		break;
 	}
 }
 //描画
@@ -75,6 +79,9 @@ void SceneMgr_Draw() {
 	case eScene_Result:
 		Result_Draw();
 		break;
+	case eScene_Credit:
+		Credit_Draw();
+		break;
 	}
 }
 
@@ -89,8 +96,8 @@ static void SceneMgr_InitializeModule(eScene scene) {
 	switch
 		(scene) { //シーンによって処理分岐
 	case eScene_Menu: //指定画面がメニュー画面なら
-			Menu_Initialize(); //メニュー画面の初期化処理をする
-			break;//以下略
+		Menu_Initialize(); //メニュー画面の初期化処理をする
+		break;//以下略
 	case eScene_Game:
 		Game_Initialize();
 		break;
@@ -106,6 +113,9 @@ static void SceneMgr_InitializeModule(eScene scene) {
 	case eScene_Result:
 		Result_Initialize();
 		break;
+	case eScene_Credit:
+		Credit_Initialize();
+		break;
 	}
 }
 // 引数sceneモジュールの終了処理を行う
@@ -113,8 +123,8 @@ static void SceneMgr_FinalizeModule(eScene scene) {
 	switch
 		(scene) { //シーンによって処理を分岐
 	case eScene_Menu: //指定画面がメニュー画面なら
-			Menu_Finalize(); //メニュー画面の終了処理処理をする
-			break;//以下略
+		Menu_Finalize(); //メニュー画面の終了処理処理をする
+		break;//以下略
 	case eScene_Game:
 		Game_Finalize();
 		break;
@@ -129,6 +139,9 @@ static void SceneMgr_FinalizeModule(eScene scene) {
 		break;
 	case eScene_Result:
 		Result_Finalize();
+		break;
+	case eScene_Credit:
+		Credit_Finalize();
 		break;
 	}
 }
