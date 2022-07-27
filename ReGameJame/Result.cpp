@@ -6,6 +6,8 @@
 static int mImageHandle; //画像ハンドル格納用変数
 static int g_ResultBGM;
 float TimeResult;
+extern int seikai;
+
 
 //初期化
 void Result_Initialize() {
@@ -34,7 +36,7 @@ void Result_Draw() {
 	DrawFormatString(400, 212, 0xffffff, "びょう");
 	DrawFormatString(120, 250, 0xffffff, "せいかいしたかず");
 
-	DrawFormatStringToHandle(240, 280, 0xffffff, FontHandle2, "？/10");
+	DrawFormatStringToHandle(240, 280, 0xffffff, FontHandle2, "%d/10",seikai);
 	DrawFormatString(400, 302, 0xffffff, "問");
 
 	SetFontSize(16);
