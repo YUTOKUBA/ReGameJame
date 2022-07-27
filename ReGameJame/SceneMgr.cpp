@@ -81,6 +81,7 @@ void SceneMgr_Draw() {
 		break;
 	case eScene_Credit:
 		Credit_Draw();
+		break;
 	case eScene_End:
 		End_Draw();
 		break;
@@ -117,6 +118,7 @@ static void SceneMgr_InitializeModule(eScene scene) {
 		break;
 	case eScene_Credit:
 		Credit_Initialize();
+		break;
 	case eScene_End:
 		End_Initialize();
 		break;
@@ -146,6 +148,7 @@ static void SceneMgr_FinalizeModule(eScene scene) {
 		break;
 	case eScene_Credit:
 		Credit_Finalize();
+		break;
 	case eScene_End:
 		End_Finalize();
 		break;

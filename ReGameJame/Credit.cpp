@@ -7,7 +7,7 @@
 static int mImageHandle; //画像ハンドル格納用変数
 //初期化
 void Credit_Initialize() {
-	mImageHandle = LoadGraph("images/Scene_GaneCredit.png"); //画像のロード
+	mImageHandle = LoadGraph("images/Credit.png"); //画像のロード
 }
 //終了処理
 void Credit_Finalize() {

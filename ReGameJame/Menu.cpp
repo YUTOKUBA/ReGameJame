@@ -65,9 +65,7 @@ void Menu_Update() {
 //描画
 void Menu_Draw() {
 	DrawGraph(0, 0, mImageHandle, FALSE);
-	/*DrawString(20, 380, "メニュー画面です。", GetColor(136, 136, 255));
-	DrawString(20, 400, "Gキーを押すとゲーム画面に進みます。", GetColor(136, 136, 255));
-	DrawString(20, 420, "Cキーを押すと 設定画面に進みます。", GetColor(136, 136, 255));*/
+	//DrawFormatString(0, 0, GetColor(0, 100, 0), "%d", MenuNo);
 	DrawRotaGraph(90, 220 + MenuNo * 60, 1.0f, M_PI, g_Cursor, TRUE, TRUE, TRUE);
 	SetFontSize(30);
 	DrawString(120, 210, "・スタート", GetColor(0, 0, 0));
