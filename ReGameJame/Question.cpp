@@ -110,7 +110,7 @@ void Quest::Question_select() {
 
 void Quest::DrawQuestion() {
 	SetFontSize(20);
-	DrawFormatString(100, 200, 0x000000, "%5s", Question[QCount][0]);
-	DrawFormatString(500, 200, 0x000000, "%5s", Question[QCount][1]);
+	DrawFormatString(130, 200, 0x000000, "%5s", Question[QCount][0]);
+	DrawFormatString(430, 200, 0x000000, "%5s", Question[QCount][1]);
 
 }
