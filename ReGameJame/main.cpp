@@ -8,6 +8,8 @@ int FontHandle2;
 //更新
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
+	SetMainWindowText("キック・「あ」・ボール");		//タイトルを設定
+
 	ChangeWindowMode(TRUE); //ウィンドウモード変更
 	DxLib_Init(); //DXライブラリ初期化
 	SetDrawScreen(DX_SCREEN_BACK); //裏画面設定
