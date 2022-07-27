@@ -6,13 +6,18 @@
 #include "Question.h"
 
 static int mImageHandle; //画像ハンドル格納用変数
-static int keeperHandle;
-static int Ball;
+static int keeperHandle; //画像ハンドル格納用変数
+static int Ball;		 //画像ハンドル格納用変数
+static int BallCatch;	 //画像ハンドル格納用変数
 static int SE_Atari;
 static int SE_Hazure;
 static int g_GameBGM;
 float g_TimeLimit;
+
 bool g_TimeStop;
+bool keeper;
+bool left;
+bool right;
 
 int g_count;
 int g_count_old;
@@ -29,12 +34,16 @@ void Game_Initialize() {
 	mImageHandle = LoadGraph("images/Scene_GameMain.png"); //画像のロード
 	keeperHandle = LoadGraph("images/keeper.png");
 	Ball = LoadGraph("images/A_Ball.png");
+	BallCatch = LoadGraph("images/soccer_catch.png");
 	SE_Atari = LoadSoundMem("BGM_SE/Seikai.mp3");	//SEのロード
 	SE_Hazure = LoadSoundMem("BGM_SE/Huseikai.mp3");	//SEのロード
 	g_GameBGM = LoadSoundMem("BGM_SE/Flash_Light.mp3");	//SEのロード
 	PlaySoundMem(g_GameBGM, DX_PLAYTYPE_LOOP, TRUE);
 	g_TimeLimit = 60 * (TIMELIMIT); //制限時間をセット
 	g_TimeStop = false;
+	keeper = false;
+	left = false;
+	right = false;
 	g_count = 0;
 	g_count_old = 0;
 	QUESTION.Init();
@@ -48,6 +57,7 @@ void Game_Initialize() {
 //終了処理
 void Game_Finalize() {
 	DeleteGraph(mImageHandle); //画像の解放
+	DeleteSoundMem(g_GameBGM);
 }
 
 //更新
@@ -69,43 +79,57 @@ void Game_Update() {
 		if (g_KeyFlg && XNowKey.Buttons[XINPUT_BUTTON_A]) {
 			Choices = 0;
 			if (QUESTION.Answer_judge(Choices) == TRUE) {
-				//ball_X = 160;
-				//ball_Y = 260;
+				ball_X = 160;
+				ball_Y = 260;
 				Ans_State = 1;	//正解
 				seikai++;
 				QUESTION.SetQCount();
 				PlaySoundMem(SE_Atari, DX_PLAYTYPE_BACK, TRUE);
 				g_TimeStop = true;
+				left = true;
+				right = false;
 				//WaitTimer(1000);
 			}
 			else
 			{
+				ball_X = 160;
+				ball_Y = 260;
 				Ans_State = 2;	//不正解
 				sippai++;
 				QUESTION.SetQCount();
 				PlaySoundMem(SE_Hazure, DX_PLAYTYPE_BACK, TRUE);
 				//WaitTimer(1000);
 				g_TimeStop = true;
+				right = true;
+				left = false;
 			}
 		}
 		else if (g_KeyFlg && XNowKey.Buttons[XINPUT_BUTTON_B]) {
 			Choices = 1;
 			if (QUESTION.Answer_judge(Choices) == TRUE) {
+				ball_X = 480;
+				ball_Y = 260;
 				Ans_State = 1;	//正解
 				seikai++;
 				QUESTION.SetQCount();
 				PlaySoundMem(SE_Atari, DX_PLAYTYPE_BACK, TRUE);
 				//WaitTimer(1000);
 				g_TimeStop = true;
+				right = true;
+				left = false;
 			}
 			else
 			{
+				ball_X = 480;
+				ball_Y = 260;
 				Ans_State = 2;//不正解
 				sippai++;
 				QUESTION.SetQCount();
 				PlaySoundMem(SE_Hazure, DX_PLAYTYPE_BACK, TRUE);
 				//WaitTimer(1000);
 				g_TimeStop = true;
+				left = true;
+				right = false;
 			}
 		}
 
@@ -126,6 +150,8 @@ void Game_Update() {
 	else {
 		if (++g_count > g_count_old + 60) {
 			g_TimeStop = false;
+			ball_X = 320;
+			ball_Y = 420;
 		}
 	}
 
@@ -135,8 +161,19 @@ void Game_Update() {
 void Game_Draw() {
 
 	DrawGraph(0, 0, mImageHandle, FALSE);
-
-	DrawRotaGraph(320, 260, 0.8, 0, keeperHandle, TRUE);
+	if (g_TimeStop == false) {
+		DrawRotaGraph(320, 260, 0.8, 0, keeperHandle, TRUE);
+	}
+	else {
+		if (left == true) {
+			keeper = false;
+			DrawRotaGraph(320, 260, 0.6, 0, BallCatch, TRUE, keeper);
+		}
+		else {
+			keeper = true;
+			DrawRotaGraph(320, 260, 0.6, 0, BallCatch, TRUE, keeper);
+		}
+	}
 	DrawRotaGraph(ball_X, ball_Y, 0.15, 0, Ball, TRUE);
 	if (g_TimeStop == false) {
 		QUESTION.DrawQuestion();
