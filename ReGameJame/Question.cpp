@@ -1,6 +1,7 @@
 #pragma warning(disable : 4996)
 #include"DxLib.h"
 #include"Question.h"
+#include <string.h>
 
 Quest QUESTION;
 
@@ -32,29 +33,34 @@ void Quest::Init() {
 
 }
 
-bool Quest::Answer_judge() {
+//正誤判定関数
+bool Quest::Answer_judge(int Choices) {
 
-	int Choices = 0;
-
-	//右だったらA、左だったらB
-	/*if () {//右
-		Choices = 0;
-	}
-	else if () == 1) {//左
-		Choices = 1;
-	}*/
+	int i;
 
 	Point_Circle = strchr(Question[QCount][Choices], '_');
-	if (Point_Circle != NULL)Point_Circle = &A;
+	if (Point_Circle != NULL) {
+		strncpy(Point_Circle, A, 2);
+	}
 
 	//現在出されている問題とその問題のオリジナルを比較する
 	/*if (Question[QCount][Choices] && Question_Original[QCount][Choices]) {
 		return TRUE;
 	}*/
 
-	if(strcmp(Question[QCount][Choices], Question_Original[QCount][Choices])==0)return true;
+	i = strcmp(Question[QCount][Choices], Question_Original[QCount][Choices]);
+	if (QCount < 9) {
+		QCount++;
+	}
+	if (strcmp(Question[QCount][Choices], Question_Original[QCount][Choices]) == 0) {
+		return TRUE;
+	}
+	else {
+		return FALSE;
+	}
 
-	return FALSE;
+
+
 
 }
 
@@ -64,31 +70,31 @@ void Quest::Question_input() {
 	for (int j = 0; j < 2; j++) {
 		for (int i = 0; i < 10; i++) {
 			//出題用にランダムに選ばれた全問題の中身（文字列）をコピーする
-			strcpy(Question[0][j], All_Quest[0/*RandLog[0]*/][j]);
+			strcpy(Question[i][j], All_Quest[RandLog[i]][j]);
 
 			//正誤比較用にランダムに選ばれた全問題の中身（文字列）をコピーする
-			strcpy(Question_Original[0][j], All_Quest[0/*RandLog[0]*/][j]);
-			
+			strcpy(Question_Original[i][j], All_Quest[RandLog[i]][j]);
+
 		}
 	}
 	for (int j = 0; j < 2; j++) {
-		for (int i = 0; i < 1; i++) {
+		for (int i = 0; i < 10; i++) {
 			//'あ'の場所のアドレスを取る
-			Point_A = strchr(Question[0][j], 'あ');
+			Point_A = strchr(Question[i][j], 'あ');
 			//NULLだったら'あ'がない,NULL以外だったら'あ'がある
 			if (Point_A != NULL) {
 				//'あ'の場所に代入する
 
-				*(Point_A-1) = '_';
+				*(Point_A - 1) = '_';
 				*(Point_A) = '_';
 
 			}
 			else {
 				//'あ'がなかったら、ランダムな位置の文字を''を代入する
 				int StrNumber = GetRand(3);
-				Question[0][j][(StrNumber * 2)]= '_';
-				Question[0][j][(StrNumber * 2+1)]= '_';
-				
+				Question[i][j][(StrNumber * 2)] = '_';
+				Question[i][j][(StrNumber * 2 + 1)] = '_';
+
 			}
 		}
 	}
@@ -98,7 +104,7 @@ void Quest::Question_input() {
 void Quest::Question_select() {
 
 	for (int i = 0; i < 10; i++) {
-		RandLog[i] = GetRand(19);
+		RandLog[i] = GetRand(45);
 	}
 
 
