@@ -14,13 +14,13 @@ static int SE_Hazure;
 static int g_GameBGM;
 float g_TimeLimit;
 
-bool g_TimeStop;
-bool keeper;
-bool left;
-bool right;
+bool g_TimeStop;	// 答えを選択した時に操作を受け付けないようにするためのフラグ
+bool keeper;		// 飛んだキーパーを反転させる用のフラグ
+bool left;			// キーパーを左に向かせるようフラグ
+bool right;			// キーパーを右に向かせるようフラグ
 
-int g_count;
-int g_count_old;
+int g_count;		// １秒間操作をさせないための変数
+int g_count_old;	// g_count の前の時間を入れる用変数
 
 int a;
 int seikai;
@@ -37,7 +37,7 @@ void Game_Initialize() {
 	BallCatch = LoadGraph("images/soccer_catch.png");
 	SE_Atari = LoadSoundMem("BGM_SE/Seikai.mp3");	//SEのロード
 	SE_Hazure = LoadSoundMem("BGM_SE/Huseikai.mp3");	//SEのロード
-	g_GameBGM = LoadSoundMem("BGM_SE/Flash_Light.mp3");	//SEのロード
+	g_GameBGM = LoadSoundMem("BGM_SE/Flash_Light.mp3");	//BGMのロード
 	PlaySoundMem(g_GameBGM, DX_PLAYTYPE_LOOP, TRUE);
 	g_TimeLimit = 60 * (TIMELIMIT); //制限時間をセット
 	g_TimeStop = false;
@@ -46,6 +46,8 @@ void Game_Initialize() {
 	right = false;
 	g_count = 0;
 	g_count_old = 0;
+	ball_X = 320;
+	ball_Y = 420;
 	QUESTION.Init();
 	QUESTION.Question_select();
 	QUESTION.Question_input();
@@ -70,66 +72,67 @@ void Game_Update() {
 		SceneMgr_ChangeScene(eScene_GameOver);//シーンをメニューに変更
 	}
 
+	// 答えを選択したら1秒止める
 	if (g_TimeStop == false) {
 
-		g_TimeLimit--;
-		g_count++;
-		g_count_old = g_count;
+		g_TimeLimit--;			// 答えを選択するまで制限時間が減っていく
+		g_count++;				// 答えを選択するまでの時間を取る
+		g_count_old = g_count;	// 答えを選択した瞬間の時間を取る
 
 		if (g_KeyFlg && XNowKey.Buttons[XINPUT_BUTTON_A]) {
 			Choices = 0;
 			if (QUESTION.Answer_judge(Choices) == TRUE) {
-				ball_X = 160;
-				ball_Y = 260;
+				ball_X = 171;
+				ball_Y = 195;
 				Ans_State = 1;	//正解
 				seikai++;
 				QUESTION.SetQCount();
 				PlaySoundMem(SE_Atari, DX_PLAYTYPE_BACK, TRUE);
 				g_TimeStop = true;
-				left = true;
+				left = false;
 				right = false;
 				//WaitTimer(1000);
 			}
 			else
 			{
-				ball_X = 160;
-				ball_Y = 260;
+				ball_X = 171;
+				ball_Y = 195;
 				Ans_State = 2;	//不正解
 				sippai++;
 				QUESTION.SetQCount();
 				PlaySoundMem(SE_Hazure, DX_PLAYTYPE_BACK, TRUE);
 				//WaitTimer(1000);
 				g_TimeStop = true;
-				right = true;
-				left = false;
+				right = false;
+				left = true;
 			}
 		}
 		else if (g_KeyFlg && XNowKey.Buttons[XINPUT_BUTTON_B]) {
 			Choices = 1;
 			if (QUESTION.Answer_judge(Choices) == TRUE) {
-				ball_X = 480;
-				ball_Y = 260;
+				ball_X = 468;
+				ball_Y = 195;
 				Ans_State = 1;	//正解
 				seikai++;
 				QUESTION.SetQCount();
 				PlaySoundMem(SE_Atari, DX_PLAYTYPE_BACK, TRUE);
 				//WaitTimer(1000);
 				g_TimeStop = true;
-				right = true;
+				right = false;
 				left = false;
 			}
 			else
 			{
-				ball_X = 480;
-				ball_Y = 260;
+				ball_X = 468;
+				ball_Y = 195;
 				Ans_State = 2;//不正解
 				sippai++;
 				QUESTION.SetQCount();
 				PlaySoundMem(SE_Hazure, DX_PLAYTYPE_BACK, TRUE);
 				//WaitTimer(1000);
 				g_TimeStop = true;
-				left = true;
-				right = false;
+				left = false;
+				right = true;
 			}
 		}
 
@@ -148,6 +151,7 @@ void Game_Update() {
 		}
 	}
 	else {
+		// １秒待つまで操作を受け付けなくする
 		if (++g_count > g_count_old + 60) {
 			g_TimeStop = false;
 			ball_X = 320;
@@ -161,17 +165,24 @@ void Game_Update() {
 void Game_Draw() {
 
 	DrawGraph(0, 0, mImageHandle, FALSE);
+
+	// 答えを選択するまでは普通のキーパー
 	if (g_TimeStop == false) {
 		DrawRotaGraph(320, 260, 0.8, 0, keeperHandle, TRUE);
 	}
 	else {
+		// A が間違ったら左に飛ぶ
 		if (left == true) {
+			keeper = true;
+			DrawRotaGraph(240, 260, 0.6, 0, BallCatch, TRUE, keeper);
+		}
+		// B が間違ったら右に飛ぶ
+		else if(right == true){
 			keeper = false;
-			DrawRotaGraph(320, 260, 0.6, 0, BallCatch, TRUE, keeper);
+			DrawRotaGraph(400, 260, 0.6, 0, BallCatch, TRUE, keeper);
 		}
 		else {
-			keeper = true;
-			DrawRotaGraph(320, 260, 0.6, 0, BallCatch, TRUE, keeper);
+			DrawRotaGraph(320, 260, 0.8, 0, keeperHandle, TRUE);
 		}
 	}
 	DrawRotaGraph(ball_X, ball_Y, 0.15, 0, Ball, TRUE);
