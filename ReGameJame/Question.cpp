@@ -49,9 +49,7 @@ bool Quest::Answer_judge(int Choices) {
 	}*/
 
 	i = strcmp(Question[QCount][Choices], Question_Original[QCount][Choices]);
-	if (QCount < 9) {
-		QCount++;
-	}
+	
 	if (strcmp(Question[QCount][Choices], Question_Original[QCount][Choices]) == 0) {
 		return TRUE;
 	}
