@@ -24,6 +24,7 @@ void Game_Update() {
 	
 	//計測時間を過ぎたらゲームオーバー
 	if (g_TimeLimit-- <= 1 || CheckHitKey(KEY_INPUT_H) != 0) {
+		TimeResult = g_TimeLimit;
 		SceneMgr_ChangeScene(eScene_GameOver);//シーンをメニューに変更
 	}
 }
