@@ -40,6 +40,6 @@ void Result_Draw() {
 	DrawFormatString(400, 302, 0xffffff, "問");
 
 	SetFontSize(16);
-	DrawString(20, 380, "リザルト画面です。", GetColor(136, 136, 255));
-	DrawString(20, 400, "SPACEキーを押すとタイトル画面に進みます。", GetColor(136, 136, 255));
+	//DrawString(20, 380, "リザルト画面です。", GetColor(136, 136, 255));
+	//DrawString(20, 400, "SPACEキーを押すとタイトル画面に進みます。", GetColor(136, 136, 255));
 }

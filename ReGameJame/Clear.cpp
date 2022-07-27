@@ -27,6 +27,6 @@ void Clear_Update() {
 //描画
 void Clear_Draw() {
 	DrawGraph(0, 0, mImageHandle, FALSE);
-	DrawString(20, 380, "クリア画面です。", GetColor(136, 136, 255));
-	DrawString(20, 400, "3秒待つか、Cキーを押すとリザルト画面に進みます。", GetColor(136, 136, 255));
+	//DrawString(20, 380, "クリア画面です。", GetColor(136, 136, 255));
+	//DrawString(20, 400, "3秒待つか、Cキーを押すとリザルト画面に進みます。", GetColor(136, 136, 255));
 }

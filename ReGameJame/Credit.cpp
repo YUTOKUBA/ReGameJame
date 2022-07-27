@@ -22,6 +22,6 @@ void Credit_Update() {
 //描画
 void Credit_Draw() {
 	DrawGraph(0, 0, mImageHandle, FALSE);
-	DrawString(20, 380, "credit画面です。", GetColor(136, 136, 255));
-	DrawString(20, 400, "Bボタンを押すとMenu画面に進みます。", GetColor(136, 136, 255));
+	//DrawString(20, 380, "credit画面です。", GetColor(136, 136, 255));
+	//DrawString(20, 400, "Bボタンを押すとMenu画面に進みます。", GetColor(136, 136, 255));
 }

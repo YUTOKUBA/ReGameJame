@@ -117,7 +117,7 @@ void Game_Draw() {
 
 	QUESTION.DrawQuestion();
 
-	DrawFormatStringToHandle(280, 15, 0x000000, FontHandle1, "%2.2f", g_TimeLimit / 60); //§ŒÀŠÔ‚Ì•`‰æ
-	DrawFormatString(10, 100, 0x000000, "%d", Ans_State); //§ŒÀŠÔ‚Ì•`‰æ
+	//DrawFormatStringToHandle(280, 15, 0x000000, FontHandle1, "%2.2f", g_TimeLimit / 60); //§ŒÀŠÔ‚Ì•`‰æ
+	//DrawFormatString(10, 100, 0x000000, "%d", Ans_State); //§ŒÀŠÔ‚Ì•`‰æ
 
 }

@@ -26,6 +26,6 @@ void GameOver_Update() {
 //描画
 void GameOver_Draw() {
 	DrawGraph(0, 0, mImageHandle, FALSE);
-	DrawString(20, 380, "ゲームオーバー画面です。", GetColor(136, 136, 255));
-	DrawString(20, 400, "Jキーを押すとリザルト画面に進みます。", GetColor(136, 136, 255));
+	//DrawString(20, 380, "ゲームオーバー画面です。", GetColor(136, 136, 255));
+	//DrawString(20, 400, "Jキーを押すとリザルト画面に進みます。", GetColor(136, 136, 255));
 }
