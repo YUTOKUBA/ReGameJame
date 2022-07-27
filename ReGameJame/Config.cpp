@@ -4,9 +4,11 @@
 #include "Input.h"
 
 static int mImageHandle; //画像ハンドル格納用変数h
+static int BackSE;
 //初期化
 void Config_Initialize() {
 	mImageHandle = LoadGraph("images/Help.png");//画像のロード
+	BackSE = LoadSoundMem("BGM_SE/cancel-1.mp3");
 }
 //終了処理
 void Config_Finalize() {
@@ -15,6 +17,7 @@ void Config_Finalize() {
 //更新
 void Config_Update() {
 	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0 || XNowKey.Buttons[XINPUT_BUTTON_B]) {//Escキーが押されていたらorBボタンが押されていたら
+		PlaySoundMem(BackSE, DX_PLAYTYPE_BACK, TRUE);
 		SceneMgr_ChangeScene(eScene_Menu);//シーンをメニューに変更
 	}
 }
