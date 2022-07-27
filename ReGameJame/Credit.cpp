@@ -5,9 +5,11 @@
 
 
 static int mImageHandle; //画像ハンドル格納用変数
+static int BackSE;
 //初期化
 void Credit_Initialize() {
 	mImageHandle = LoadGraph("images/Credit.png"); //画像のロード
+	BackSE = LoadSoundMem("BGM_SE/cancel-1.mp3");
 }
 //終了処理
 void Credit_Finalize() {
@@ -16,6 +18,7 @@ void Credit_Finalize() {
 //更新
 void Credit_Update() {
 	if (CheckHitKey(KEY_INPUT_ESCAPE) != 0 || XNowKey.Buttons[XINPUT_BUTTON_B]) {//Escキーが押されていたらorBボタンが押されていたら
+		PlaySoundMem(BackSE, DX_PLAYTYPE_BACK, TRUE);
 		SceneMgr_ChangeScene(eScene_Menu);//シーンをメニューに変更
 	}
 }
