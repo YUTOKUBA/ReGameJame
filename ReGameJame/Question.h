@@ -238,6 +238,13 @@ public:
 		return QCount;
 	}
 
+	//Qcount‚ğˆê‚Â‚¸‚Â‘‚â‚·
+	void SetQCount() {
+		if (QCount < 9) {
+			++QCount;
+		}
+	}
+
 };
 
 extern Quest QUESTION;
