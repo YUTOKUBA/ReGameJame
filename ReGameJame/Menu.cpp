@@ -66,11 +66,11 @@ void Menu_Update() {
 void Menu_Draw() {
 	DrawGraph(0, 0, mImageHandle, FALSE);
 	//DrawFormatString(0, 0, GetColor(0, 100, 0), "%d", MenuNo);
-	DrawRotaGraph(90, 220 + MenuNo * 60, 1.0f, M_PI, g_Cursor, TRUE, TRUE, TRUE);
+	DrawRotaGraph(90, 225 + MenuNo * 60, 1.0f, M_PI, g_Cursor, TRUE, TRUE, TRUE);
 	SetFontSize(30);
-	DrawString(120, 210, "・スタート", GetColor(0, 0, 0));
-	DrawString(120, 270, "・操作説明", GetColor(0, 0, 0));
-	DrawString(120, 330, "・クレジット", GetColor(0, 0, 0));
-	DrawString(120, 390, "・終了", GetColor(0, 0, 0));
+	DrawString(120, 210, "スタート", GetColor(0, 0, 0));
+	DrawString(120, 270, "操作説明", GetColor(0, 0, 0));
+	DrawString(120, 330, "クレジット", GetColor(0, 0, 0));
+	DrawString(120, 390, "終了", GetColor(0, 0, 0));
 	SetFontSize(18);
 }
